@@ -1,0 +1,152 @@
+﻿@using EntityLayer.Concrate
+@model List<Heading>
+@{
+    ViewBag.Title = "MyHeading";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+@{ string letters = "ABCÇDEFGĞHIİJKLMNOÖPRSŞTUÜVYZ";
+    string badgeClass = "";
+    string color = "";
+    string durum = "";
+    string durum2 = "";
+    string btnDurum = "";}
+<!DOCTYPE html>
+<html>
+
+<body class="hold-transition sidebar-mini">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Projects</h1>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Başlık İşlemleri</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                #
+                            </th>
+                            <th style="width: 15%">
+                                Başlık Adı
+                            </th>
+                            <th style="width: 15%">
+                                Oluşturan Yazar
+                            </th>
+                           
+                            <th style="width: 20%" class="text-center">
+                                Kategori
+                            </th>
+                            <th style="width: 25%">
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            int firstLetterIndex = letters.IndexOf(item.Category.CategoryName[0].ToString());
+
+                            if (firstLetterIndex >= 0 && firstLetterIndex < 5)
+                            {
+                                badgeClass = "badge badge-danger";
+                            }
+                            else if (firstLetterIndex >= 5 && firstLetterIndex < 10)
+                            {
+                                badgeClass = "badge badge-primary";
+                            }
+                            else if (firstLetterIndex >= 10 && firstLetterIndex < 15)
+                            {
+                                badgeClass = "badge badge-secondary";
+                            }
+                            else if (firstLetterIndex >= 15 && firstLetterIndex < 20)
+                            {
+                                badgeClass = "badge badge-warning";
+                            }
+                            else if (firstLetterIndex >= 20 && firstLetterIndex < 25)
+                            {
+                                badgeClass = "badge badge-success";
+                            }
+                            else
+                            {
+                                badgeClass = "badge badge-dark";
+                            }
+                            if (item.HeadingStatus == true) { color = "badge badge-success"; durum = "Aktif"; durum2 = "Pasif Yap"; btnDurum = "btn btn-danger btn-sm"; }
+                            else { color = "badge badge-danger"; durum = "Pasif"; durum2 = "Aktif Yap"; btnDurum = "btn btn-success btn-sm"; }
+
+
+                            <tr>
+                                <td>
+                                    @item.HeadingID
+                                </td>
+                                <td>
+                                    <a>
+                                        @item.HeadingName
+                                    </a>
+                                    <br />
+                                    <small>
+                                        @item.HeadigDate.ToShortDateString()
+                                    </small>
+                                </td>
+                                <td>
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <img alt="Avatar" class="table-avatar" src="@item.Writer.WriterImage">
+                                        </li>
+                                    </ul>
+                                </td>
+                              
+                                <td class="project-state">
+                                    <span class="@badgeClass ">@item.Category.CategoryName</span>
+                                </td>
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-primary btn-sm" href="/Content/ContentByHeading/@item.HeadingID">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        İçerikler
+                                    </a>
+                                    <a class="btn btn-info btn-sm" href="/WriterPanel/EditHeading/@item.HeadingID">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Düzenle
+                                    </a>
+                                    <a class="@btnDurum" href="/WriterPanel/DeleteHeading/@item.HeadingID">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        @durum2
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+</body>
+</html>
+<a href="/WriterPanel/NewHeading/" class="btn btn-primary">Yeni Başlık Ekle</a>
+

@@ -1,0 +1,11 @@
+C:\Users\user\source\repos\MvcProjeKampi\EntityLayer\bin\Release\EntityLayer.dll.config
+C:\Users\user\source\repos\MvcProjeKampi\EntityLayer\bin\Release\EntityLayer.dll
+C:\Users\user\source\repos\MvcProjeKampi\EntityLayer\bin\Release\EntityLayer.pdb
+C:\Users\user\source\repos\MvcProjeKampi\EntityLayer\bin\Release\EntityFramework.dll
+C:\Users\user\source\repos\MvcProjeKampi\EntityLayer\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\user\source\repos\MvcProjeKampi\EntityLayer\bin\Release\EntityFramework.xml
+C:\Users\user\source\repos\MvcProjeKampi\EntityLayer\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\user\source\repos\MvcProjeKampi\EntityLayer\obj\Release\EntityLayer.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\MvcProjeKampi\EntityLayer\obj\Release\EntityLayer.csproj.CopyComplete
+C:\Users\user\source\repos\MvcProjeKampi\EntityLayer\obj\Release\EntityLayer.dll
+C:\Users\user\source\repos\MvcProjeKampi\EntityLayer\obj\Release\EntityLayer.pdb

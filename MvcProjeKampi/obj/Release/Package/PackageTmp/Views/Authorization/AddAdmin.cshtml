@@ -1,0 +1,45 @@
+﻿@model EntityLayer.Concrate.Admin
+@{
+    ViewBag.Title = "AddAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Yeni Admin Ekleme Sayfası</h1>
+<br />
+
+@using (Html.BeginForm("AddAdmin", "Authorization", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.Label("Admin Adı")
+    @Html.TextBoxFor(x => x.AdminName, new { @class = "form-control" })
+
+    <br />
+    @Html.Label("Şifreyi giriniz")
+    @Html.TextBoxFor(x => x.AdminPassword, new { @class = "form-control" })
+
+    <br />
+
+    @Html.Label("Rolü Seçiniz")
+   
+    @Html.DropDownList("AdminRole",
+                 new List<SelectListItem> {
+                     new SelectListItem {
+                        Text="A",
+                        Value="A",
+                        // Selected = true, seçili olarak gelsin
+                        // Disabled = true  disable olarak gelsin istersek kullanıyoruz
+                     },
+                     new SelectListItem {
+                        Text="B",
+                        Value="B",
+                     },
+                 } ,new { @class = "form-control" })
+
+    <br />
+    <button class="btn btn-primary">Kaydet</button>
+
+
+</div>
+}
+
+
